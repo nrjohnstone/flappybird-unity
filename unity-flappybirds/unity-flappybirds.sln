@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unity-flappybirds", "unity-flappybirds.csproj", "{A53EBC09-6835-A516-D746-1FAFC07A5938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyBirds.Tests", "..\tests\FlappyBirds.Tests\FlappyBirds.Tests.csproj", "{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

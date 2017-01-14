@@ -1,7 +1,7 @@
 ﻿using System;
 using Assets.Scripts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UnityEngine;
+
 
 namespace FlappyBirds.Tests
 {

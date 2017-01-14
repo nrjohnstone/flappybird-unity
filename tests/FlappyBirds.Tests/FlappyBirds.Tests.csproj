@@ -36,9 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\FlappyBirds2\Library\UnityAssemblies\UnityEngine.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlappyBirds2.csproj">
-      <Project>{A15065E3-BEF8-3E72-8FDD-902BE8E9E85E}</Project>
-      <Name>FlappyBirds2</Name>
+    <ProjectReference Include="..\..\unity-flappybirds\unity-flappybirds.csproj">
+      <Project>{a53ebc09-6835-a516-d746-1fafc07a5938}</Project>
+      <Name>unity-flappybirds</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
