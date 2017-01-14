@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -8,8 +9,10 @@ namespace Assets.Scripts
     {
         public static GameControl instance;
         public GameObject gameOverText;
+        public Text scoreText;
         public bool gameOver = false;
         public float scrollSpeed = -1.5f;
+        private int score = 0;
 
 
         void Awake () {
@@ -30,6 +33,14 @@ namespace Assets.Scripts
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+        }
+
+        public void BirdScored()
+        {
+            if (gameOver)
+                return;
+            score++;
+            scoreText.text = "Score: " + score;
         }
 
         public void BirdDied () {

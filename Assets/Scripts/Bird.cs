@@ -3,7 +3,7 @@
 namespace Assets.Scripts
 {
     public class Bird : MonoBehaviour {
-        public float upForce = 200f;
+        public float upForce = 150f;
         private bool isDead = false;
         private Animator anim;
         
