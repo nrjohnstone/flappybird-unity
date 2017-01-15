@@ -5,7 +5,7 @@ namespace Assets.Scripts
     public class BirdController
     {
         public float upForce = 150f;
-        private bool isDead = false;
+        public bool isDead { get; private set; }
 
         private readonly IAnimator _anim;
         private readonly IRigidbody2D _rb2d;
@@ -29,6 +29,19 @@ namespace Assets.Scripts
                     _anim.SetTrigger("Flap");
                 }
             }
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            _rb2d.velocity = Vector2.zero;
+            isDead = true;
+            _anim.SetTrigger("Die");
+            NotifyBirdDied();
+        }
+
+        protected virtual void NotifyBirdDied()
+        {
+            GameControl.instance.BirdDied();
         }
     }
 }
