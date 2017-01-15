@@ -142,7 +142,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1295845087
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af677a0e71a86a74a89d94f0d36c7ab4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf30377eae2883c44bc825c8247bb64b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -215,10 +215,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 39009323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ac1d13d882e8fa4191f8f9b15dee987, type: 3}
+  m_Script: {fileID: 11500000, guid: f6cc39f9b1b14574da9575a5dddf3063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upForce: 200
+  upForce: 150
 --- !u!95 &39009329
 Animator:
   serializedVersion: 3
@@ -228,7 +228,7 @@ Animator:
   m_GameObject: {fileID: 39009323}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5165c5a7ce92832488c167e4a722830c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1e5a677c31a2c7b4f85ef6aa5620551f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500018802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60b0072d9ed19f4dabeb99fab5616c6, type: 3}
+  m_Script: {fileID: 11500000, guid: e8de2fb1e4c3e7045b5001f3a2e2cbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 2128936365}
@@ -378,11 +378,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 500018802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af978d9debcab49a0b9f6a706d0cbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 18fc6154da1d2444e80c8085c76bbc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   columnPoolSize: 5
-  columnPrefab: {fileID: 1935144771218700, guid: 348d9477eb85d4a47921227c3ba716f9,
+  columnPrefab: {fileID: 1935144771218700, guid: 6ba9f078dfe9a4840b8cc6da74933d2f,
     type: 2}
   spawnRate: 4
   columnMin: -2
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1576626997
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b5a3f5935b0c234c859d1527d6bbf6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42c6f8e9420690448a403084d76ea247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -511,7 +511,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1576626997
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2b5a3f5935b0c234c859d1527d6bbf6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42c6f8e9420690448a403084d76ea247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -830,7 +830,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1771678611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a015f68731a9a4148bac34cd5f45a1f9, type: 3}
+  m_Script: {fileID: 11500000, guid: d1649bcb03f38904b81cd39bcec87ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!50 &1771678614
@@ -898,7 +898,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1295845087
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d22f589c22a89d48b0820cd4a0a859b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c733ae598a60ded40aa5b2d8f3dbd30a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -910,7 +910,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1771678611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73299ff57a8452e40b3c77e474728de0, type: 3}
+  m_Script: {fileID: 11500000, guid: f105fdc594308e942861a3fa360811f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1885278594
@@ -1053,7 +1053,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1295845087
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d22f589c22a89d48b0820cd4a0a859b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c733ae598a60ded40aa5b2d8f3dbd30a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1981132569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a015f68731a9a4148bac34cd5f45a1f9, type: 3}
+  m_Script: {fileID: 11500000, guid: d1649bcb03f38904b81cd39bcec87ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1981132575
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1981132569}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73299ff57a8452e40b3c77e474728de0, type: 3}
+  m_Script: {fileID: 11500000, guid: f105fdc594308e942861a3fa360811f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2128936365
