@@ -5,7 +5,6 @@ namespace Assets.Scripts
     public class Bird : MonoBehaviour, IInput, IAnimator, IRigidbody2D
     {
         public float upForce = 150f;
-        private bool isDead = false;
         private Animator anim;
 
         private BirdController birdController;
@@ -17,7 +16,10 @@ namespace Assets.Scripts
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
-            birdController = new BirdController(this, this, this);
+            birdController = new BirdController(this, this, this)
+            {
+                upForce = upForce
+            };
         }
 
         public void Update()
@@ -27,10 +29,7 @@ namespace Assets.Scripts
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            rb2d.velocity = Vector2.zero;
-            isDead = true;
-            anim.SetTrigger("Die");
-            GameControl.instance.BirdDied();
+            birdController.OnCollisionEnter2D(other);            
         }
 
         public bool IsLeftMouseButtonDown()
