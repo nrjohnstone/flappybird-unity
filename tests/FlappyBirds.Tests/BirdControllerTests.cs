@@ -3,6 +3,7 @@ using Assets.Scripts;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using TinyMessenger;
 using UnityEngine;
 
 
@@ -10,32 +11,23 @@ namespace FlappyBirds.Tests
 {
     [TestClass]
     public class BirdControllerTests
-    {
-        internal class BirdControllerTestDouble : BirdController
-        {
-            protected override void NotifyBirdDied()
-            {                
-            }
-
-            public BirdControllerTestDouble(IInput input, IAnimator anim, IRigidbody2D rb2D) : base(input, anim, rb2D)
-            {
-            }
-        }
-
+    {       
         private readonly IInput _mockInput;
         private readonly IAnimator _mockAnimator;
         private readonly IRigidbody2D _mockRigidBody2D;
+        private readonly ITinyMessengerHub _mockMessengerHub;
 
         public BirdControllerTests()
         {
             _mockInput = Substitute.For<IInput>();
             _mockAnimator = Substitute.For<IAnimator>();
             _mockRigidBody2D = Substitute.For<IRigidbody2D>();
+            _mockMessengerHub = Substitute.For<ITinyMessengerHub>();
         }
 
         private BirdController CreateSut()
         {
-            var sut = new BirdControllerTestDouble(_mockInput, _mockAnimator, _mockRigidBody2D);
+            var sut = new BirdController(_mockInput, _mockAnimator, _mockRigidBody2D, _mockMessengerHub);
             return sut;
         }
 
@@ -123,6 +115,17 @@ namespace FlappyBirds.Tests
             sut.OnCollisionEnter2D(new Collision2D());
 
             _mockRigidBody2D.Received().velocity = Vector2.zero;
+        }
+
+        [TestMethod]
+        public void WhenBirdCollision_ShouldPublishBirdDiedMessage()
+        {
+            var sut = CreateSut();
+            _mockInput.IsLeftMouseButtonDown().Returns(true);
+
+            sut.OnCollisionEnter2D(new Collision2D());
+
+            _mockMessengerHub.Received().Publish(Arg.Any<BirdDiedMessage>());
         }
     }
 }

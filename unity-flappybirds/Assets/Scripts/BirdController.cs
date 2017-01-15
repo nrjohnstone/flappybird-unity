@@ -1,3 +1,4 @@
+using TinyMessenger;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -9,13 +10,15 @@ namespace Assets.Scripts
 
         private readonly IAnimator _anim;
         private readonly IRigidbody2D _rb2d;
+        private readonly ITinyMessengerHub _messengerHub;
         private readonly IInput _input;
 
-        public BirdController(IInput input, IAnimator anim, IRigidbody2D rb2D)
+        public BirdController(IInput input, IAnimator anim, IRigidbody2D rb2D, ITinyMessengerHub messengerHub)
         { 
             _input = input;
             _anim = anim;
             _rb2d = rb2D;
+            _messengerHub = messengerHub;
         }
 
         public void Update()
@@ -41,7 +44,7 @@ namespace Assets.Scripts
 
         protected virtual void NotifyBirdDied()
         {
-            MessageHub.Instance.Publish(new BirdDiedMessage());
+            _messengerHub.Publish(new BirdDiedMessage());
         }
     }
 }

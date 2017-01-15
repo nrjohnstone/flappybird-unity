@@ -16,7 +16,7 @@ namespace Assets.Scripts
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
-            birdController = new BirdController(this, this, this)
+            birdController = new BirdController(this, this, this, MessageHub.Instance)
             {
                 upForce = upForce
             };

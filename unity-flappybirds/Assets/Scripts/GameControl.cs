@@ -50,7 +50,7 @@ namespace Assets.Scripts
         }
     }
 
-    internal class BirdDiedMessage : ITinyMessage
+    public class BirdDiedMessage : ITinyMessage
     {
         public object Sender { get; private set; }
     }
