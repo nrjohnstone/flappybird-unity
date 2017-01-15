@@ -4,32 +4,32 @@ namespace Assets.Scripts
 {
     public class Bird : MonoBehaviour, IInput, IAnimator, IRigidbody2D
     {
-        public float upForce = 150f;
-        private Animator anim;
+        public float UpForce = 150f;
+        private Animator _anim;
 
-        private BirdController birdController;
+        private BirdController _birdController;
         
-        private Rigidbody2D rb2d;
+        private Rigidbody2D _rb2D;
 
         public void Start()
         {
-            rb2d = GetComponent<Rigidbody2D>();
-            anim = GetComponent<Animator>();
+            _rb2D = GetComponent<Rigidbody2D>();
+            _anim = GetComponent<Animator>();
 
-            birdController = new BirdController(this, this, this, MessageHub.Instance)
+            _birdController = new BirdController(this, this, this, MessageHub.Instance)
             {
-                upForce = upForce
+                UpForce = UpForce
             };
         }
 
         public void Update()
         {
-            birdController.Update();
+            _birdController.Update();
         }
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            birdController.OnCollisionEnter2D(other);            
+            _birdController.OnCollisionEnter2D(other);            
         }
 
         public bool IsLeftMouseButtonDown()
@@ -39,18 +39,18 @@ namespace Assets.Scripts
 
         public void SetTrigger(string triggerName)
         {
-            anim.SetTrigger(triggerName);
+            _anim.SetTrigger(triggerName);
         }
 
         public Vector2 velocity
         {
-            get { return rb2d.velocity; }
-            set { rb2d.velocity = value; }
+            get { return _rb2D.velocity; }
+            set { _rb2D.velocity = value; }
         }
 
         public void AddForce(Vector2 vector2)
         {
-            rb2d.AddForce(vector2);
+            _rb2D.AddForce(vector2);
         }
     }
 }

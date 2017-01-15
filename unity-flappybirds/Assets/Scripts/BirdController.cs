@@ -5,11 +5,11 @@ namespace Assets.Scripts
 {
     public class BirdController
     {
-        public float upForce = 150f;
-        public bool isDead { get; private set; }
+        public float UpForce = 150f;
+        public bool IsDead { get; private set; }
 
         private readonly IAnimator _anim;
-        private readonly IRigidbody2D _rb2d;
+        private readonly IRigidbody2D _rb2D;
         private readonly ITinyMessengerHub _messengerHub;
         private readonly IInput _input;
 
@@ -17,29 +17,40 @@ namespace Assets.Scripts
         { 
             _input = input;
             _anim = anim;
-            _rb2d = rb2D;
+            _rb2D = rb2D;
             _messengerHub = messengerHub;
         }
 
         public void Update()
         {
-            if (isDead == false)
+            if (IsDead)
+                return;
+
+            if (_input.IsLeftMouseButtonDown())
             {
-                if (_input.IsLeftMouseButtonDown())
-                {
-                    _rb2d.velocity = Vector2.zero;
-                    _rb2d.AddForce(new Vector2(0, upForce));
-                    _anim.SetTrigger("Flap");
-                }
+                ChangeForceTo(new Vector2(0, UpForce));
+                SetAnimationTrigger("Flap");
             }
         }
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            _rb2d.velocity = Vector2.zero;
-            isDead = true;
-            _anim.SetTrigger("Die");
+            _rb2D.velocity = Vector2.zero;
+            IsDead = true;
+            SetAnimationTrigger("Die");
             NotifyBirdDied();
+        }
+
+        private void ChangeForceTo(Vector2 vector2)
+        {
+            _rb2D.velocity = Vector2.zero;
+            _rb2D.AddForce(vector2);
+        }
+
+       
+        private void SetAnimationTrigger(string triggerName)
+        {
+            _anim.SetTrigger(triggerName);
         }
 
         protected virtual void NotifyBirdDied()

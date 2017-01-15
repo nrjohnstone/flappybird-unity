@@ -52,7 +52,7 @@ namespace FlappyBirds.Tests
         {
             var sut = CreateSut();
             _mockInput.IsLeftMouseButtonDown().Returns(true);
-            sut.upForce = 200f;
+            sut.UpForce = 200f;
 
             sut.Update();
 
@@ -92,7 +92,7 @@ namespace FlappyBirds.Tests
             
             sut.OnCollisionEnter2D(new Collision2D());
 
-            sut.isDead.Should().BeTrue();
+            sut.IsDead.Should().BeTrue();
         }
 
         [TestMethod]
