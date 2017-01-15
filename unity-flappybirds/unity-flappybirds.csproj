@@ -83,6 +83,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AmbientInput.cs" />
+    <Compile Include="Assets\Scripts\AnimatorWrapper.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
     <Compile Include="Assets\Scripts\BirdController.cs" />
     <Compile Include="Assets\Scripts\Column.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Assets\Scripts\IRigidbody2D.cs" />
     <Compile Include="Assets\Scripts\MessageHub.cs" />
     <Compile Include="Assets\Scripts\RepeatingBackground.cs" />
+    <Compile Include="Assets\Scripts\Rigidbody2DWrapper.cs" />
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

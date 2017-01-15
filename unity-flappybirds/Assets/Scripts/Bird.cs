@@ -2,21 +2,19 @@
 
 namespace Assets.Scripts
 {
-    public class Bird : MonoBehaviour, IInput, IAnimator, IRigidbody2D
+    public class Bird : MonoBehaviour
     {
         public float UpForce = 150f;
-        private Animator _anim;
 
         private BirdController _birdController;
-        
-        private Rigidbody2D _rb2D;
 
         public void Start()
         {
-            _rb2D = GetComponent<Rigidbody2D>();
-            _anim = GetComponent<Animator>();
-
-            _birdController = new BirdController(this, this, this, MessageHub.Instance)
+            _birdController = new BirdController(
+                input: new AmbientInput(), 
+                anim: new AnimatorWrapper(GetComponent<Animator>()), 
+                rb2D: new Rigidbody2DWrapper(GetComponent<Rigidbody2D>()),
+                messengerHub: MessageHub.Instance)
             {
                 UpForce = UpForce
             };
@@ -31,26 +29,6 @@ namespace Assets.Scripts
         {
             _birdController.OnCollisionEnter2D(other);            
         }
-
-        public bool IsLeftMouseButtonDown()
-        {
-            return Input.GetMouseButtonDown(0);
-        }
-
-        public void SetTrigger(string triggerName)
-        {
-            _anim.SetTrigger(triggerName);
-        }
-
-        public Vector2 velocity
-        {
-            get { return _rb2D.velocity; }
-            set { _rb2D.velocity = value; }
-        }
-
-        public void AddForce(Vector2 vector2)
-        {
-            _rb2D.AddForce(vector2);
-        }
+          
     }
 }
