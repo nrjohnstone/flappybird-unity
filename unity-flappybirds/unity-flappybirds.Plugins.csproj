@@ -5,21 +5,19 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A53EBC09-6835-A516-D746-1FAFC07A5938}</ProjectGuid>
+    <ProjectGuid>{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,23 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="unity-flappybirds.Plugins.csproj">
-      <Project>{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}</Project>
-      <Name>unity-flappybirds.Plugins</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assets\Scripts\Bird.cs" />
-    <Compile Include="Assets\Scripts\BirdController.cs" />
-    <Compile Include="Assets\Scripts\Column.cs" />
-    <Compile Include="Assets\Scripts\ColumnPool.cs" />
-    <Compile Include="Assets\Scripts\GameControl.cs" />
-    <Compile Include="Assets\Scripts\IAnimator.cs" />
-    <Compile Include="Assets\Scripts\IInput.cs" />
-    <Compile Include="Assets\Scripts\IRigidbody2D.cs" />
-    <Compile Include="Assets\Scripts\MessageHub.cs" />
-    <Compile Include="Assets\Scripts\RepeatingBackground.cs" />
-    <Compile Include="Assets\Scripts\ScrollingObject.cs" />
+    <Compile Include="Assets\Plugins\TinyMessenger.1.0\Content\TinyMessenger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

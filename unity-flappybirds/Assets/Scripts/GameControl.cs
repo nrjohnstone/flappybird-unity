@@ -1,4 +1,5 @@
 ﻿using System;
+using TinyMessenger;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,11 +15,11 @@ namespace Assets.Scripts
         public float scrollSpeed = -1.5f;
         private int score = 0;
 
-
         void Awake () {
             if (instance == null)
             {
                 instance = this;
+                MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => { BirdDied(); });
             }
             else if (instance != this)
             {
@@ -47,5 +48,10 @@ namespace Assets.Scripts
             gameOverText.SetActive(true);
             gameOver = true;
         }
+    }
+
+    internal class BirdDiedMessage : ITinyMessage
+    {
+        public object Sender { get; private set; }
     }
 }

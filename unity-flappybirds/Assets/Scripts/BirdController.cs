@@ -41,7 +41,7 @@ namespace Assets.Scripts
 
         protected virtual void NotifyBirdDied()
         {
-            GameControl.instance.BirdDied();
+            MessageHub.Instance.Publish(new BirdDiedMessage());
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unity-flappybirds.Plugins", "unity-flappybirds.Plugins.csproj", "{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "unity-flappybirds", "unity-flappybirds.csproj", "{A53EBC09-6835-A516-D746-1FAFC07A5938}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyBirds.Tests", "..\tests\FlappyBirds.Tests\FlappyBirds.Tests.csproj", "{28D3CCE3-1A0F-4000-8BEA-05CF5C7AE7AB}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75EBF95-AA6E-D2DE-740B-2E62B78BE90E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A53EBC09-6835-A516-D746-1FAFC07A5938}.Release|Any CPU.ActiveCfg = Release|Any CPU
