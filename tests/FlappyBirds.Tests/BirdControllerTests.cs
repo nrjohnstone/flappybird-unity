@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts;
+using Assets.Scripts.UnityAbstractions;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;

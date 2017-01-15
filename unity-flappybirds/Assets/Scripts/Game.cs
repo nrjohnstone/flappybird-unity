@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-    public class GameControl : MonoBehaviour
+    public class Game : MonoBehaviour
     {
-        public static GameControl instance;
+        public static Game instance;
         public GameObject gameOverText;
         public Text scoreText;
         public bool gameOver = false;

@@ -8,7 +8,7 @@ namespace Assets.Scripts
         {
             if (other.GetComponent<Bird>() != null)
             {
-                GameControl.instance.BirdScored();
+                Game.instance.BirdScored();
             }
         }
     }

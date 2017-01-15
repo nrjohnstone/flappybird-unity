@@ -27,7 +27,7 @@ namespace Assets.Scripts
         void Update ()
         {
             timeSinceLastSpawned += Time.deltaTime;
-            if (GameControl.instance.gameOver == false && timeSinceLastSpawned >= spawnRate)
+            if (Game.instance.gameOver == false && timeSinceLastSpawned >= spawnRate)
             {
                 timeSinceLastSpawned = 0;
                 float spawnYPosition = Random.Range(columnMin, columnMax);
