@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 39009329}
   m_Layer: 0
   m_Name: Bird
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6cc39f9b1b14574da9575a5dddf3063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upForce: 150
+  UpForce: 150
 --- !u!95 &39009329
 Animator:
   serializedVersion: 3

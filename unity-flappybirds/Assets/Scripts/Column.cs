@@ -1,4 +1,5 @@
-﻿using TinyMessenger;
+﻿using Assets.Scripts.UnityAbstractions;
+using TinyMessenger;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -13,22 +14,10 @@ namespace Assets.Scripts
 
         public void OnTriggerEnter2D(Collider2D other)
         {
+            if (_columnController == null)
+                return;
+
             _columnController.OnTriggerEnter2D(new Collider2DWrapper(other));
-        }
-    }
-
-    public class Collider2DWrapper : ICollider2D
-    {
-        private readonly Collider2D _instance;
-
-        public Collider2DWrapper(Collider2D instance)
-        {
-            _instance = instance;
-        }
-
-        public T GetComponent<T>()
-        {
-            return _instance.GetComponent<T>();
         }
     }
 

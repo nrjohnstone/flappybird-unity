@@ -1,4 +1,5 @@
-﻿using TinyMessenger;
+﻿using Assets.Scripts.UnityAbstractions;
+using TinyMessenger;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -14,15 +15,10 @@ namespace Assets.Scripts
 
         public void OnTriggerEnter2D(ICollider2D other)
         {
-            if (other.GetComponent<Bird>() != null)
+            if (other.tag == "Player")
             {
                 _messengerHub.Publish(new BirdScoredMessage());
             }
         }
-    }
-
-    public interface ICollider2D
-    {
-        T GetComponent<T>();
     }
 }

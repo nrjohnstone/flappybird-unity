@@ -1,4 +1,6 @@
-﻿using Assets.Scripts;
+﻿using System.Runtime.Serialization;
+using Assets.Scripts;
+using Assets.Scripts.UnityAbstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using TinyMessenger;
@@ -20,13 +22,25 @@ namespace FlappyBirds.Tests
         }
 
         [TestMethod]
-        public void Should()
+        public void WhenColumnScoringCollider_CollidesWithBird_ShouldPublishMessageBirdScored()
         {
             var sut = CreateSut();
-
-            _mockCollider2D.GetComponent<Bird>().Returns(true);
+            _mockCollider2D.tag.Returns("Player");
 
             sut.OnTriggerEnter2D(_mockCollider2D);
+
+            _mockMessengerHub.Received().Publish(Arg.Any<BirdScoredMessage>());
+        }
+
+        [TestMethod]
+        public void WhenColumnScoringCollider_CollidesWithNonBird_ShouldNotPublishAnyMessage()
+        {
+            var sut = CreateSut();
+            _mockCollider2D.tag.Returns("");
+
+            sut.OnTriggerEnter2D(_mockCollider2D);
+
+            _mockMessengerHub.DidNotReceive().Publish(Arg.Any<BirdScoredMessage>());
         }
     }
 }
