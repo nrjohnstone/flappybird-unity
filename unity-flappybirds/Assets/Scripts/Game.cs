@@ -1,5 +1,5 @@
 ﻿using System;
-using TinyMessenger;
+using Assets.Scripts.Messaging;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -48,10 +48,5 @@ namespace Assets.Scripts
             gameOverText.SetActive(true);
             gameOver = true;
         }
-    }
-
-    public class BirdDiedMessage : ITinyMessage
-    {
-        public object Sender { get; private set; }
     }
 }

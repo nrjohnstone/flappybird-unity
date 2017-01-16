@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using Assets.Scripts;
+using Assets.Scripts.Messaging;
 using Assets.Scripts.UnityAbstractions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;

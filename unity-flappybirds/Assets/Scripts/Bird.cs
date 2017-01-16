@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UnityAbstractions;
+﻿using Assets.Scripts.Messaging;
+using Assets.Scripts.UnityAbstractions;
 using UnityEngine;
 
 namespace Assets.Scripts

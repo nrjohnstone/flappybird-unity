@@ -1,5 +1,5 @@
-﻿using Assets.Scripts.UnityAbstractions;
-using TinyMessenger;
+﻿using Assets.Scripts.Messaging;
+using Assets.Scripts.UnityAbstractions;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -19,10 +19,5 @@ namespace Assets.Scripts
 
             _columnController.OnTriggerEnter2D(new Collider2DWrapper(other));
         }
-    }
-
-    public class BirdScoredMessage : ITinyMessage
-    {
-        public object Sender { get; private set; }
     }
 }

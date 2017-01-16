@@ -1,6 +1,6 @@
 ﻿using TinyMessenger;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Messaging
 {
     public static class MessageHub
     {
