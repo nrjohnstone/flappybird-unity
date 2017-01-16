@@ -20,12 +20,12 @@ namespace Assets.Scripts
             {
                 instance = this;
                 MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => { BirdDied(); });
+                MessageHub.Instance.Subscribe<BirdScoredMessage>(m => BirdScored());
             }
             else if (instance != this)
             {
                 Destroy(gameObject);
             }
-           
         }
 
         void Update()
