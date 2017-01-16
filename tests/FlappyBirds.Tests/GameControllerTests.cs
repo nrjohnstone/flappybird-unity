@@ -1,9 +1,11 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Messaging;
 using Assets.Scripts.UnityAbstractions;
 using FluentAssertions;
 using FluentAssertions.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
+using TinyMessenger;
 using UnityEngine.UI;
 
 namespace FlappyBirds.Tests
@@ -13,12 +15,14 @@ namespace FlappyBirds.Tests
     {
         private IText _scoreText;
         private IGameObject _gameOverText;
+        private ITinyMessengerHub _messenger;
 
         private GameController CreateSut()
         {
             _scoreText = Substitute.For<IText>();
             _gameOverText = Substitute.For<IGameObject>();
-            var sut = new GameController(_scoreText, _gameOverText);
+            _messenger = new TinyMessengerHub();
+            var sut = new GameController(_scoreText, _gameOverText, _messenger);
             return sut;
         }
 
@@ -60,6 +64,26 @@ namespace FlappyBirds.Tests
             sut.BirdDied();
 
             sut.gameOver.Should().Be(true);
+        }
+
+        [TestMethod]
+        public void Ctor_ShouldSubscribeToBirdDiedMessage()
+        {
+            var sut = CreateSut();
+
+            _messenger.Publish(new BirdDiedMessage());
+
+            sut.gameOver.Should().Be(true);
+        }
+
+        [TestMethod]
+        public void Ctor_ShouldSubscribeToBirdScoredMessage()
+        {
+            var sut = CreateSut();
+
+            _messenger.Publish(new BirdScoredMessage());
+
+            sut.score.Should().Be(1);
         }
     }
 }

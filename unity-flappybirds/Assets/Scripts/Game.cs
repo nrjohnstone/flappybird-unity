@@ -21,9 +21,7 @@ namespace Assets.Scripts
             {
                 instance = this;
                 _gameController = new GameController(new TextWrapper(scoreText), 
-                    new GameObjectWrapper(gameOverText));
-                MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => _gameController.BirdDied());
-                MessageHub.Instance.Subscribe<BirdScoredMessage>(m => _gameController.BirdScored());
+                    new GameObjectWrapper(gameOverText), MessageHub.Instance);
             }
             else if (instance != this)
             {

@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.UnityAbstractions;
+﻿using Assets.Scripts.Messaging;
+using Assets.Scripts.UnityAbstractions;
+using TinyMessenger;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -11,10 +13,13 @@ namespace Assets.Scripts
         private readonly IText _scoreText;
         private readonly IGameObject _gameOverText;
 
-        public GameController(IText scoreText, IGameObject gameOverText)
+        public GameController(IText scoreText, IGameObject gameOverText, ITinyMessengerHub messenger)
         {
             _scoreText = scoreText;
             _gameOverText = gameOverText;
+           
+            messenger.Subscribe<BirdDiedMessage>((m) => BirdDied());
+            messenger.Subscribe<BirdScoredMessage>(m => BirdScored());
         }
 
         public void BirdScored()
