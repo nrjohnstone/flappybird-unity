@@ -83,6 +83,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\ColumnController.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientInput.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AnimatorWrapper.cs" />
     <Compile Include="Assets\Scripts\Bird.cs" />
