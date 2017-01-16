@@ -85,8 +85,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bird.cs" />
     <Compile Include="Assets\Scripts\BirdController.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\IText.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdScoredMessage.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdDiedMessage.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\TextWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\Collider2DWrapper.cs" />
     <Compile Include="Assets\Scripts\Column.cs" />
     <Compile Include="Assets\Scripts\ColumnController.cs" />

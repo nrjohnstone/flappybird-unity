@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Messaging;
+using Assets.Scripts.UnityAbstractions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,13 +15,15 @@ namespace Assets.Scripts
         public bool gameOver = false;
         public float scrollSpeed = -1.5f;
         private int score = 0;
+        private GameController _gameController;
 
         void Awake () {
             if (instance == null)
             {
                 instance = this;
+                _gameController = new GameController(new TextWrapper(scoreText));
                 MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => { BirdDied(); });
-                MessageHub.Instance.Subscribe<BirdScoredMessage>(m => BirdScored());
+                MessageHub.Instance.Subscribe<BirdScoredMessage>(m => _gameController.BirdScored());
             }
             else if (instance != this)
             {
@@ -35,15 +38,7 @@ namespace Assets.Scripts
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-
-        public void BirdScored()
-        {
-            if (gameOver)
-                return;
-            score++;
-            scoreText.text = "Score: " + score;
-        }
-
+        
         public void BirdDied () {
             gameOverText.SetActive(true);
             gameOver = true;
