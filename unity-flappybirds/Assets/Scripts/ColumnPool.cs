@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.UnityAbstractions;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
@@ -10,17 +11,19 @@ namespace Assets.Scripts
         public float columnMin = -2f;
         public float columnMax = 2f;
 
-        private GameObject[] columns;
+        private IGameObject[] columns;
         private Vector2 objectPoolPosition = new Vector2(-15f, -25f);
         private float timeSinceLastSpawned;
         private float spawnXPosition = 10f;
         private int currentColumn = 0;
         
-        void Start () {
-            columns = new GameObject[columnPoolSize];
+        void Start ()
+        {
+            columns = new GameObjectWrapper[columnPoolSize];
             for (int i = 0; i < columnPoolSize; i++)
             {
-                columns[i] = (GameObject) Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity);
+                var instantiate = (GameObject) Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity);
+                columns[i] = new GameObjectWrapper(instantiate);
             }
         }
     

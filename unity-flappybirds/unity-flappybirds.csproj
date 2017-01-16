@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\UnityAbstractions\IText.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdScoredMessage.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdDiedMessage.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\ITransform.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\SceneWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\TextWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\Collider2DWrapper.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Assets\Scripts\UnityAbstractions\IInput.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IRigidbody2D.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\Rigidbody2DWrapper.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\TransformWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

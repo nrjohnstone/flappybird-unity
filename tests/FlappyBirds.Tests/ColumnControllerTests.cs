@@ -38,7 +38,7 @@ namespace FlappyBirds.Tests
         {
             var sut = CreateSut();
             _mockCollider2D.tag.Returns("");
-
+            
             sut.OnTriggerEnter2D(_mockCollider2D);
 
             _mockMessengerHub.DidNotReceive().Publish(Arg.Any<BirdScoredMessage>());

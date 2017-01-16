@@ -15,5 +15,11 @@ namespace Assets.Scripts.UnityAbstractions
         {
             _instance.SetActive(value);
         }
+
+        public ITransform transform
+        {
+            get { return new TransformWrapper(_instance.transform); }
+        }
+        
     }
 }
