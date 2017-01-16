@@ -12,11 +12,13 @@ namespace FlappyBirds.Tests
     public class GameControllerTests
     {
         private IText _scoreText;
+        private IGameObject _gameOverText;
 
         private GameController CreateSut()
         {
             _scoreText = Substitute.For<IText>();
-            var sut = new GameController(_scoreText);
+            _gameOverText = Substitute.For<IGameObject>();
+            var sut = new GameController(_scoreText, _gameOverText);
             return sut;
         }
 
@@ -38,6 +40,26 @@ namespace FlappyBirds.Tests
             sut.BirdScored();
 
             _scoreText.Received().text = "Score: 1";
+        }
+
+        [TestMethod]
+        public void BirdDied_ShouldSetGameOverTextToVisible()
+        {
+            var sut = CreateSut();
+
+            sut.BirdDied();
+
+            _gameOverText.Received().SetActive(true);
+        }
+
+        [TestMethod]
+        public void BirdDied_ShouldSetGameOver()
+        {
+            var sut = CreateSut();
+
+            sut.BirdDied();
+
+            sut.gameOver.Should().Be(true);
         }
     }
 }

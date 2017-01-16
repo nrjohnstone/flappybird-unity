@@ -6,13 +6,15 @@ namespace Assets.Scripts
     public class GameController
     {
         public int score { get; set; }
-        public bool gameOver = false;
+        public bool gameOver { get; set; }
 
         private readonly IText _scoreText;
+        private readonly IGameObject _gameOverText;
 
-        public GameController(IText scoreText)
+        public GameController(IText scoreText, IGameObject gameOverText)
         {
             _scoreText = scoreText;
+            _gameOverText = gameOverText;
         }
 
         public void BirdScored()
@@ -21,6 +23,12 @@ namespace Assets.Scripts
                 return;
             score++;
             _scoreText.text = "Score: " + score;
+        }
+
+        public void BirdDied()
+        {
+            _gameOverText.SetActive(true);
+            gameOver = true;
         }
     }
 }

@@ -12,17 +12,17 @@ namespace Assets.Scripts
         public static Game instance;
         public GameObject gameOverText;
         public Text scoreText;
-        public bool gameOver = false;
+        public bool gameOver { get { return _gameController.gameOver; } }
         public float scrollSpeed = -1.5f;
-        private int score = 0;
         private GameController _gameController;
 
         void Awake () {
             if (instance == null)
             {
                 instance = this;
-                _gameController = new GameController(new TextWrapper(scoreText));
-                MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => { BirdDied(); });
+                _gameController = new GameController(new TextWrapper(scoreText), 
+                    new GameObjectWrapper(gameOverText));
+                MessageHub.Instance.Subscribe<BirdDiedMessage>((m) => _gameController.BirdDied());
                 MessageHub.Instance.Subscribe<BirdScoredMessage>(m => _gameController.BirdScored());
             }
             else if (instance != this)
@@ -37,11 +37,6 @@ namespace Assets.Scripts
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-        }
-        
-        public void BirdDied () {
-            gameOverText.SetActive(true);
-            gameOver = true;
         }
     }
 }
