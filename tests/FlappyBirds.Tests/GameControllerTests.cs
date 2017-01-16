@@ -2,11 +2,9 @@
 using Assets.Scripts.Messaging;
 using Assets.Scripts.UnityAbstractions;
 using FluentAssertions;
-using FluentAssertions.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using TinyMessenger;
-using UnityEngine.UI;
 
 namespace FlappyBirds.Tests
 {
@@ -16,13 +14,17 @@ namespace FlappyBirds.Tests
         private IText _scoreText;
         private IGameObject _gameOverText;
         private ITinyMessengerHub _messenger;
+        private IInput _input;
+        private ISceneManager _sceneManager;
 
         private GameController CreateSut()
         {
             _scoreText = Substitute.For<IText>();
             _gameOverText = Substitute.For<IGameObject>();
             _messenger = new TinyMessengerHub();
-            var sut = new GameController(_scoreText, _gameOverText, _messenger);
+            _input = Substitute.For<IInput>();
+            _sceneManager = Substitute.For<ISceneManager>();
+            var sut = new GameController(_scoreText, _gameOverText, _messenger, _input, _sceneManager);
             return sut;
         }
 
@@ -84,6 +86,19 @@ namespace FlappyBirds.Tests
             _messenger.Publish(new BirdScoredMessage());
 
             sut.score.Should().Be(1);
+        }
+
+        [TestMethod]
+        public void Update_WhenGameOverAndLeftMouseDown_ShouldRestartGame()
+        {
+            var sut = CreateSut();
+
+            sut.BirdDied();
+            _input.IsLeftMouseButtonDown().Returns(true);
+            sut.Update();
+
+            _sceneManager.Received().GetActiveScene();
+            _sceneManager.Received().LoadScene(Arg.Any<int>());
         }
     }
 }

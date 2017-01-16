@@ -21,7 +21,8 @@ namespace Assets.Scripts
             {
                 instance = this;
                 _gameController = new GameController(new TextWrapper(scoreText), 
-                    new GameObjectWrapper(gameOverText), MessageHub.Instance);
+                    new GameObjectWrapper(gameOverText), MessageHub.Instance,
+                    new AmbientInput(), new AmbientSceneManager());
             }
             else if (instance != this)
             {
@@ -31,10 +32,7 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if (gameOver && Input.GetMouseButtonDown(0))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            _gameController.Update();
         }
     }
 }
