@@ -2,7 +2,7 @@
 {
     public interface IColumnSpawnStrategy
     {
-        void Start();
+        void Initialize();
         bool ShouldSpawnColumn();
         void Spawn();
     }
