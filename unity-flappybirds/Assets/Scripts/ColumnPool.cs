@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.UnityAbstractions;
+﻿using Assets.Scripts.Messaging;
+using Assets.Scripts.UnityAbstractions;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -17,6 +18,17 @@ namespace Assets.Scripts
         private float spawnXPosition = 10f;
         private int currentColumn = 0;
         private ColumnPoolController _columnPoolController;
+        private bool _gameOver = false;
+
+        public void Awake()
+        {
+            MessageHub.Instance.Subscribe<GameOverMessage>(m => GameOver());
+        }
+
+        private void GameOver()
+        {
+            _gameOver = true;
+        }
 
         void Start ()
         {
@@ -34,7 +46,7 @@ namespace Assets.Scripts
         {
             _columnPoolController.Update();
             timeSinceLastSpawned += Time.deltaTime;
-            if (Game.instance.gameOver == false && timeSinceLastSpawned >= spawnRate)
+            if (_gameOver == false && timeSinceLastSpawned >= spawnRate)
             {
                 timeSinceLastSpawned = 0;
                 float spawnYPosition = Random.Range(columnMin, columnMax);
