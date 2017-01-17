@@ -100,6 +100,7 @@
     <Compile Include="Assets\Scripts\RepeatingBackground.cs" />
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientInput.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\AmbientRandom.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientSceneManager.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientTime.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AnimatorWrapper.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Assets\Scripts\UnityAbstractions\ICollider2D.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IGameObject.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IInput.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\IRandom.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IRigidbody2D.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IScene.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\ISceneManager.cs" />

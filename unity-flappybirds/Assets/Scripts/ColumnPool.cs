@@ -21,6 +21,7 @@ namespace Assets.Scripts
         private bool _gameOver = false;
 
         private readonly ITime Time = new AmbientTime();
+        private readonly IRandom Random = new AmbientRandom();
 
         public void Awake()
         {
