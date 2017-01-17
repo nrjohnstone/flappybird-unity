@@ -16,9 +16,12 @@ namespace Assets.Scripts
         private float timeSinceLastSpawned;
         private float spawnXPosition = 10f;
         private int currentColumn = 0;
-        
+        private ColumnPoolController _columnPoolController;
+
         void Start ()
         {
+            _columnPoolController = new ColumnPoolController();
+            _columnPoolController.Start();
             columns = new GameObjectWrapper[columnPoolSize];
             for (int i = 0; i < columnPoolSize; i++)
             {
@@ -29,6 +32,7 @@ namespace Assets.Scripts
     
         void Update ()
         {
+            _columnPoolController.Update();
             timeSinceLastSpawned += Time.deltaTime;
             if (Game.instance.gameOver == false && timeSinceLastSpawned >= spawnRate)
             {
