@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Messaging;
+﻿using System;
+using Assets.Scripts.Messaging;
 using Assets.Scripts.UnityAbstractions;
 using UnityEngine;
 
@@ -35,13 +36,17 @@ namespace Assets.Scripts
 
         void Start ()
         {
-            _columnPoolController = new ColumnPoolController();
+            Func<GameObjectWrapper> columnFactory =
+                () => new GameObjectWrapper(
+                    (GameObject)Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity));
+
+            _columnPoolController = new ColumnPoolController(MessageHub.Instance);
             _columnPoolController.Start();
+
             columns = new GameObjectWrapper[columnPoolSize];
             for (int i = 0; i < columnPoolSize; i++)
             {
-                var instantiate = (GameObject) Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity);
-                columns[i] = new GameObjectWrapper(instantiate);
+                columns[i] = columnFactory();
             }
         }
     
