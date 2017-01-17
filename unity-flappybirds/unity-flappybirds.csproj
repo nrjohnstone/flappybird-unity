@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\ScrollingObject.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientInput.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AmbientSceneManager.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\AmbientTime.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\AnimatorWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\Collider2DWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\GameObjectWrapper.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\UnityAbstractions\IScene.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\ISceneManager.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\IText.cs" />
+    <Compile Include="Assets\Scripts\UnityAbstractions\ITime.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\ITransform.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\Rigidbody2DWrapper.cs" />
     <Compile Include="Assets\Scripts\UnityAbstractions\SceneWrapper.cs" />

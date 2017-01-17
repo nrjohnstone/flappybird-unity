@@ -20,6 +20,8 @@ namespace Assets.Scripts
         private ColumnPoolController _columnPoolController;
         private bool _gameOver = false;
 
+        private readonly ITime Time = new AmbientTime();
+
         public void Awake()
         {
             MessageHub.Instance.Subscribe<GameOverMessage>(m => GameOver());
