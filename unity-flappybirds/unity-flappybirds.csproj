@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\IColumnSpawnStrategy.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdDiedMessage.cs" />
     <Compile Include="Assets\Scripts\Messaging\BirdScoredMessage.cs" />
+    <Compile Include="Assets\Scripts\Messaging\GameOverMessage.cs" />
     <Compile Include="Assets\Scripts\Messaging\MessageHub.cs" />
     <Compile Include="Assets\Scripts\RandomColumnSpawner.cs" />
     <Compile Include="Assets\Scripts\RepeatingBackground.cs" />

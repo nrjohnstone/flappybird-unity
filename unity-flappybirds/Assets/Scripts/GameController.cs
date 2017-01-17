@@ -15,6 +15,7 @@ namespace Assets.Scripts
 
         private readonly IText _scoreText;
         private readonly IGameObject _gameOverText;
+        private readonly ITinyMessengerHub _messenger;
         private readonly IInput _input;
         private readonly ISceneManager _sceneManager;
 
@@ -23,9 +24,10 @@ namespace Assets.Scripts
         {
             _scoreText = scoreText;
             _gameOverText = gameOverText;
+            _messenger = messenger;
             _input = input;
             _sceneManager = sceneManager;
-
+            
             messenger.Subscribe<BirdDiedMessage>((m) => BirdDied());
             messenger.Subscribe<BirdScoredMessage>(m => BirdScored());
         }
@@ -42,6 +44,7 @@ namespace Assets.Scripts
         {
             _gameOverText.SetActive(true);
             gameOver = true;
+            _messenger.Publish(new GameOverMessage());
         }
 
         public void Update()
