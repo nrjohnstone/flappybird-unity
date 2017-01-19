@@ -45,10 +45,10 @@ namespace FlappyBirds.Tests
         public void Initialize_ShouldCreateNumberOfColumnsUsingPoolSize()
         {
             var sut = CreateSut();
-            sut.columnPoolSize = 10;
+            sut.ColumnPoolSize = 10;
             sut.Initialize();
 
-            _columnFactory.Received(sut.columnPoolSize).Invoke();
+            _columnFactory.Received(sut.ColumnPoolSize).Invoke();
         }
 
         [TestMethod]
@@ -116,7 +116,45 @@ namespace FlappyBirds.Tests
 
             sut.Spawn();
 
-            _random.Received().Range(sut.columnMin, sut.columnMax);
+            _random.Received().Range(sut.ColumnMin, sut.ColumnMax);
+        }
+
+        [TestMethod]
+        public void Spawn_WhenCalledForEachColumnInPool_ShouldUpdateColumnPosition()
+        {
+            var sut = CreateSut();
+            sut.ColumnPoolSize = 2;
+            sut.Initialize();
+
+            float randomValue = 5f;
+            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(randomValue);
+            sut.Spawn();
+
+            // act
+            sut.Spawn();
+
+            sut.GetColumnPosition(0).y.Should().Be(randomValue);
+            sut.GetColumnPosition(1).y.Should().Be(randomValue);
+        }
+
+        [TestMethod]
+        public void Spawn_WhenLastColumnHasBeenUpdated_ShouldWrapToFirstColumn()
+        {
+            var sut = CreateSut();
+            sut.ColumnPoolSize = 2;
+            sut.Initialize();
+
+            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(5f);
+            sut.Spawn();
+            sut.Spawn();
+
+            float firstColumnExpectedRandomValue = 10f;
+            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(firstColumnExpectedRandomValue);
+
+            // act
+            sut.Spawn();
+
+            sut.GetColumnPosition(0).y.Should().Be(firstColumnExpectedRandomValue);
         }
     }
 }

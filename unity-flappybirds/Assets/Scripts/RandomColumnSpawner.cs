@@ -6,12 +6,12 @@ namespace Assets.Scripts
 {
     public class RandomColumnSpawner : IColumnSpawnStrategy
     {
-        public int columnPoolSize = 5;
-        public GameObject columnPrefab;
-        public float SpawnRate = 4f;
-        public float columnMin = -2f;
-        public float columnMax = 2f;
-        public float SpawnXPosition = 10f;
+        public int ColumnPoolSize { get; set; }
+        public GameObject ColumnPrefab;
+        public float SpawnRate { get; set; }
+        public float ColumnMin { get; set; }
+        public float ColumnMax { get; set; }
+        public float SpawnXPosition { get; set; }
 
         public ITime Time { get; set; }
         public IRandom Random { get; set; }
@@ -19,14 +19,21 @@ namespace Assets.Scripts
         public RandomColumnSpawner(Func<IGameObject> columnFactory)
         {
             _columnFactory = columnFactory;
+
+            SpawnXPosition = 10f;
+            ColumnMax = 2f;
+            ColumnMin = -2f;
+            SpawnRate = 4f;
+            ColumnPoolSize = 5;
+
             Time = new AmbientTime();
             Random = new AmbientRandom();
         }
 
         public void Initialize()
         {
-            _columns = new IGameObject[columnPoolSize];
-            for (int i = 0; i < columnPoolSize; i++)
+            _columns = new IGameObject[ColumnPoolSize];
+            for (int i = 0; i < ColumnPoolSize; i++)
             {
                 _columns[i] = _columnFactory.Invoke();
             }
@@ -41,24 +48,24 @@ namespace Assets.Scripts
         public void Spawn()
         {
             _timeSinceLastSpawned = 0;
-            float spawnYPosition = Random.Range(columnMin, columnMax);
+            float spawnYPosition = Random.Range(ColumnMin, ColumnMax);
 
             _columns[_currentColumn].transform.position = new Vector2(SpawnXPosition, spawnYPosition);
             _currentColumn++;
-            if (_currentColumn >= columnPoolSize)
+            if (_currentColumn >= ColumnPoolSize)
                 _currentColumn = 0;
+        }
+
+        public Vector2 GetColumnPosition(int i)
+        {
+            return _columns[i].transform.position;
         }
 
         private readonly Func<IGameObject> _columnFactory;
 
         private IGameObject[] _columns;
         private float _timeSinceLastSpawned;
-        
         private int _currentColumn = 0;
-
-        public Vector2 GetColumnPosition(int i)
-        {
-            return _columns[i].transform.position;
-        }
     }
+
 }
