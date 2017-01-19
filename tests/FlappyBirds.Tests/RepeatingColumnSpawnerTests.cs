@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using Assets.Scripts;
 using Assets.Scripts.UnityAbstractions;
 using FluentAssertions;
@@ -9,31 +8,26 @@ using NSubstitute;
 namespace FlappyBirds.Tests
 {
     [TestClass]
-    public class RandomColumnSpawnerTests
+    public class RepeatingColumnSpawnerTests
     {
         private Func<IGameObject> _columnFactory;
         private ITime _time;
-        private IRandom _random;
         private int _columnFactoryCallCount;
 
-        private RandomColumnSpawner CreateSut()
+        private RepeatingColumnSpawner CreateSut()
         {
-            _time = Substitute.For<ITime>();
-            _random = Substitute.For<IRandom>();
             _columnFactory = () =>
             {
                 _columnFactoryCallCount++;
                 return Substitute.For<IGameObject>();
             };
 
+            _time = Substitute.For<ITime>();
 
-            var sut = new RandomColumnSpawner(
-                () => _columnFactory())
+            var sut = new RepeatingColumnSpawner(_columnFactory)
             {
-                Time = _time,
-                Random = _random
+                Time = _time
             };
-
             return sut;
         }
 
@@ -91,38 +85,17 @@ namespace FlappyBirds.Tests
         }
 
         [TestMethod]
-        public void Spawn_ShouldUpdateYPositionOfCurrentColumn_UsingRandomValue()
+        public void Spawn_ShouldUpdatePositionOfCurrentColumn_UsingSpawnPositions()
         {
             var sut = CreateSut();
+            sut.SpawnYPosition = 1.5f;
+            sut.SpawnXPosition = 11.5f;
             sut.Initialize();
 
-            float randomValue = 5f;
-            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(randomValue);
             sut.Spawn();
 
-            sut.GetColumnPosition(0).y.Should().Be(randomValue);
-        }
-
-        [TestMethod]
-        public void Spawn_ShouldUpdateXPositionOfCurrentColumn_ToSpawnXPosition()
-        {
-            var sut = CreateSut();
-            sut.Initialize();
-            
-            sut.Spawn();
-
+            sut.GetColumnPosition(0).y.Should().Be(sut.SpawnYPosition);
             sut.GetColumnPosition(0).x.Should().Be(sut.SpawnXPosition);
-        }
-
-        [TestMethod]
-        public void Spawn_ShouldGetRandomValueBetweenMinAndMax()
-        {
-            var sut = CreateSut();
-            sut.Initialize();
-
-            sut.Spawn();
-
-            _random.Received().Range(sut.ColumnMin, sut.ColumnMax);
         }
 
         [TestMethod]
@@ -130,17 +103,19 @@ namespace FlappyBirds.Tests
         {
             var sut = CreateSut();
             sut.ColumnPoolSize = 2;
+            sut.SpawnXPosition = 5f;
+            sut.SpawnYPosition = 6f;
             sut.Initialize();
 
-            float randomValue = 5f;
-            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(randomValue);
             sut.Spawn();
 
             // act
             sut.Spawn();
 
-            sut.GetColumnPosition(0).y.Should().Be(randomValue);
-            sut.GetColumnPosition(1).y.Should().Be(randomValue);
+            sut.GetColumnPosition(0).y.Should().Be(sut.SpawnYPosition);
+            sut.GetColumnPosition(0).x.Should().Be(sut.SpawnXPosition);
+            sut.GetColumnPosition(1).y.Should().Be(sut.SpawnYPosition);
+            sut.GetColumnPosition(1).x.Should().Be(sut.SpawnXPosition);
         }
 
         [TestMethod]
@@ -148,19 +123,39 @@ namespace FlappyBirds.Tests
         {
             var sut = CreateSut();
             sut.ColumnPoolSize = 2;
+            sut.SpawnYPosition = 5f;
             sut.Initialize();
 
-            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(5f);
             sut.Spawn();
             sut.Spawn();
 
-            float firstColumnExpectedRandomValue = 10f;
-            _random.Range(Arg.Any<float>(), Arg.Any<float>()).Returns(firstColumnExpectedRandomValue);
+            sut.SpawnYPosition = 6f;
 
             // act
             sut.Spawn();
 
-            sut.GetColumnPosition(0).y.Should().Be(firstColumnExpectedRandomValue);
+            sut.GetColumnPosition(0).y.Should().Be(sut.SpawnYPosition);
+        }
+
+        [TestMethod]
+        public void ShouldNotBeAbleToSpawnColumn_WithinSpawnRate_AfterSpawningAColumn()
+        {
+            var sut = CreateSut();
+            sut.ColumnPoolSize = 2;
+            sut.SpawnYPosition = 5f;
+            sut.SpawnRate = 5f;
+            sut.Initialize();
+
+            _time.deltaTime.Returns(sut.SpawnRate);
+
+            sut.ShouldSpawnColumn().Should().BeTrue();
+            sut.Spawn();
+            _time.deltaTime.Returns(0.1f);
+
+            // act
+            var shouldSpawnColumn = sut.ShouldSpawnColumn();
+
+            shouldSpawnColumn.Should().BeFalse();
         }
     }
 }
