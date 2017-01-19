@@ -14,7 +14,7 @@ namespace Assets.Scripts
         public ColumnPoolController(ITinyMessengerHub messenger, Func<IGameObject> columnFactory)
         {
             _messenger = messenger;
-            _columnSpawnStrategy = new FixedColumnSpawner(columnFactory);
+            _columnSpawnStrategy = new RandomColumnSpawner(columnFactory);
         }
 
         public void Start()

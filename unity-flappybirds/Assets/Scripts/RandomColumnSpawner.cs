@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class RandomColumnSpawner : IColumnSpawnStrategy
+    public class RandomColumnSpawner : BaseColumnSpawner, IColumnSpawnStrategy
     {
-        public int ColumnPoolSize { get; set; }
         public GameObject ColumnPrefab;
         public float SpawnRate { get; set; }
         public float ColumnMin { get; set; }
@@ -18,7 +17,7 @@ namespace Assets.Scripts
 
         public RandomColumnSpawner(Func<IGameObject> columnFactory)
         {
-            _columnFactory = columnFactory;
+            ColumnFactory = columnFactory;
 
             SpawnXPosition = 10f;
             ColumnMax = 2f;
@@ -28,15 +27,6 @@ namespace Assets.Scripts
 
             Time = new AmbientTime();
             Random = new AmbientRandom();
-        }
-
-        public void Initialize()
-        {
-            _columns = new IGameObject[ColumnPoolSize];
-            for (int i = 0; i < ColumnPoolSize; i++)
-            {
-                _columns[i] = _columnFactory.Invoke();
-            }
         }
 
         public bool ShouldSpawnColumn()
@@ -50,20 +40,12 @@ namespace Assets.Scripts
             _timeSinceLastSpawned = 0;
             float spawnYPosition = Random.Range(ColumnMin, ColumnMax);
 
-            _columns[_currentColumn].transform.position = new Vector2(SpawnXPosition, spawnYPosition);
+            Columns[_currentColumn].transform.position = new Vector2(SpawnXPosition, spawnYPosition);
             _currentColumn++;
             if (_currentColumn >= ColumnPoolSize)
                 _currentColumn = 0;
         }
 
-        public Vector2 GetColumnPosition(int i)
-        {
-            return _columns[i].transform.position;
-        }
-
-        private readonly Func<IGameObject> _columnFactory;
-
-        private IGameObject[] _columns;
         private float _timeSinceLastSpawned;
         private int _currentColumn = 0;
     }

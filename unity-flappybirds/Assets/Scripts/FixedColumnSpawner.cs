@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class FixedColumnSpawner : IColumnSpawnStrategy
+    public class FixedColumnSpawner : BaseColumnSpawner, IColumnSpawnStrategy
     {
-        public int ColumnPoolSize { get; set; }
         public float SpawnRate { get; set; }
         public ITime Time { get; set; }
         public float SpawnXPosition { get; set; }
@@ -14,7 +13,7 @@ namespace Assets.Scripts
 
         public FixedColumnSpawner(Func<IGameObject> columnFactory)
         {
-            _columnFactory = columnFactory;
+            ColumnFactory = columnFactory;
             ColumnPoolSize = 5;
             SpawnXPosition = 10f;
             SpawnYPosition = 1.1f;
@@ -25,10 +24,10 @@ namespace Assets.Scripts
 
         public void Initialize()
         {
-            _columns = new IGameObject[ColumnPoolSize];
+            Columns = new IGameObject[ColumnPoolSize];
             for (int i = 0; i < ColumnPoolSize; i++)
             {
-                _columns[i] = _columnFactory.Invoke();
+                Columns[i] = ColumnFactory.Invoke();
             }
         }
 
@@ -41,7 +40,7 @@ namespace Assets.Scripts
         public void Spawn()
         {
             _timeSinceLastSpawned = 0;
-            _columns[_currentColumn].transform.position = new Vector2(SpawnXPosition, SpawnYPosition);
+            Columns[_currentColumn].transform.position = new Vector2(SpawnXPosition, SpawnYPosition);
             _currentColumn++;
             if (_currentColumn >= ColumnPoolSize)
                 _currentColumn = 0;
@@ -49,11 +48,9 @@ namespace Assets.Scripts
 
         public Vector2 GetColumnPosition(int i)
         {
-            return _columns[i].transform.position;
+            return Columns[i].transform.position;
         }
-
-        private IGameObject[] _columns;
-        private readonly Func<IGameObject> _columnFactory;
+        
         private float _timeSinceLastSpawned;
         private int _currentColumn = 0;
     }
