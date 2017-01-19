@@ -175,3 +175,5 @@ $RECYCLE.BIN/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+unity-flappybirds/unity-flappybirds.Plugins.csproj
+unity-flappybirds/unity-flappybirds.csproj
