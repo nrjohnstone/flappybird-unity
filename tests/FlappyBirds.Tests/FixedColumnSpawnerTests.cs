@@ -8,13 +8,13 @@ using NSubstitute;
 namespace FlappyBirds.Tests
 {
     [TestClass]
-    public class RepeatingColumnSpawnerTests
+    public class FixedColumnSpawnerTests
     {
         private Func<IGameObject> _columnFactory;
         private ITime _time;
         private int _columnFactoryCallCount;
 
-        private RepeatingColumnSpawner CreateSut()
+        private FixedColumnSpawner CreateSut()
         {
             _columnFactory = () =>
             {
@@ -24,7 +24,7 @@ namespace FlappyBirds.Tests
 
             _time = Substitute.For<ITime>();
 
-            var sut = new RepeatingColumnSpawner(_columnFactory)
+            var sut = new FixedColumnSpawner(_columnFactory)
             {
                 Time = _time
             };

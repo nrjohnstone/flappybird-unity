@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class RepeatingColumnSpawner : IColumnSpawnStrategy
+    public class FixedColumnSpawner : IColumnSpawnStrategy
     {
         public int ColumnPoolSize { get; set; }
         public float SpawnRate { get; set; }
@@ -12,7 +12,7 @@ namespace Assets.Scripts
         public float SpawnXPosition { get; set; }
         public float SpawnYPosition { get; set; }
 
-        public RepeatingColumnSpawner(Func<IGameObject> columnFactory)
+        public FixedColumnSpawner(Func<IGameObject> columnFactory)
         {
             _columnFactory = columnFactory;
             ColumnPoolSize = 5;
