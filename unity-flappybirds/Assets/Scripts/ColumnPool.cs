@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         void Start ()
         {
-            Func<GameObjectWrapper> columnFactory =
+            Func<IGameObject> columnFactory =
                 () => new GameObjectWrapper(
                     (GameObject)Instantiate(columnPrefab, objectPoolPosition, Quaternion.identity));
 

@@ -76,6 +76,7 @@
     <Compile Include="ColumnControllerTests.cs" />
     <Compile Include="GameControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomColumnSpawnerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\unity-flappybirds\unity-flappybirds.csproj">

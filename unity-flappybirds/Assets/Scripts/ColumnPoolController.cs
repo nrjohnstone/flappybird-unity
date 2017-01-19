@@ -11,7 +11,7 @@ namespace Assets.Scripts
         private readonly IColumnSpawnStrategy _columnSpawnStrategy;
         private bool _gameOver;
 
-        public ColumnPoolController(ITinyMessengerHub messenger, Func<GameObjectWrapper> columnFactory)
+        public ColumnPoolController(ITinyMessengerHub messenger, Func<IGameObject> columnFactory)
         {
             _messenger = messenger;
             _columnSpawnStrategy = new RandomColumnSpawner(columnFactory);
