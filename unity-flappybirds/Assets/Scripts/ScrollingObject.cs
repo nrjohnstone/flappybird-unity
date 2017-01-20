@@ -1,23 +1,31 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Messaging;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class ScrollingObject : MonoBehaviour {
-        private Rigidbody2D rb2d;
-
-        // Use this for initialization
-        void Start ()
+        
+        public void Start ()
         {
-            rb2d = GetComponent<Rigidbody2D>();
-            rb2d.velocity = new Vector2(Game.instance.scrollSpeed, 0);
+            _rb2D = GetComponent<Rigidbody2D>();
+            _rb2D.velocity = new Vector2(Game.instance.scrollSpeed, 0);
+            MessageHub.Instance.Subscribe<GameOverMessage>(m => GameOver());
         }
-    
-        // Update is called once per frame
-        void Update () {
-            if (Game.instance.gameOver)
+
+        private void GameOver()
+        {
+            _gameOver = true;
+        }
+
+        public void Update () {
+            if (_gameOver)
             {
-                rb2d.velocity = Vector2.zero;
+                _rb2D.velocity = Vector2.zero;
             }
         }
+
+        private Rigidbody2D _rb2D;
+        private bool _gameOver;
+
     }
 }
