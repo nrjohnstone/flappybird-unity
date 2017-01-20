@@ -355,7 +355,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 2128936365}
   scoreText: {fileID: 465433073}
-  gameOver: 0
   scrollSpeed: -1.5
 --- !u!4 &500018804
 Transform:
@@ -384,9 +383,6 @@ MonoBehaviour:
   columnPoolSize: 5
   columnPrefab: {fileID: 1935144771218700, guid: 6ba9f078dfe9a4840b8cc6da74933d2f,
     type: 2}
-  spawnRate: 4
-  columnMin: -2
-  columnMax: 2
 --- !u!1 &988618880
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,7 +991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Flap to try again
+  m_Text: Press Space to try again
 --- !u!222 &1885278598
 CanvasRenderer:
   m_ObjectHideFlags: 0
