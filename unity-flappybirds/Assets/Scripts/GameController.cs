@@ -49,7 +49,7 @@ namespace Assets.Scripts
 
         public void Update()
         {
-            if (gameOver && _input.IsLeftMouseButtonDown())
+            if (gameOver && _input.IsKeyDown(KeyCode.Space))
             {
                 _sceneManager.LoadScene(_sceneManager.GetActiveScene().buildIndex);
             }

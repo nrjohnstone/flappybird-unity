@@ -5,6 +5,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using TinyMessenger;
+using UnityEngine;
 
 namespace FlappyBirds.Tests
 {
@@ -89,12 +90,12 @@ namespace FlappyBirds.Tests
         }
 
         [TestMethod]
-        public void Update_WhenGameOverAndLeftMouseDown_ShouldRestartGame()
+        public void Update_WhenGameOverAndSpaceKeyDown_ShouldRestartGame()
         {
             var sut = CreateSut();
 
             sut.BirdDied();
-            _input.IsLeftMouseButtonDown().Returns(true);
+            _input.IsKeyDown(KeyCode.Space).Returns(true);
             sut.Update();
 
             _sceneManager.Received().GetActiveScene();

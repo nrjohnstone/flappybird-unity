@@ -9,5 +9,10 @@ namespace Assets.Scripts.UnityAbstractions
         {
             return Input.GetMouseButtonDown(0);
         }
+
+        public bool IsKeyDown(KeyCode keyCode)
+        {
+            return Input.GetKeyDown(keyCode);
+        }
     }
 }
