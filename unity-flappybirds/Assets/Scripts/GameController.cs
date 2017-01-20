@@ -11,7 +11,8 @@ namespace Assets.Scripts
     public class GameController
     {
         public int score { get; set; }
-        public bool gameOver { get; set; }
+
+        private bool _gameOver;
 
         private readonly IText _scoreText;
         private readonly IGameObject _gameOverText;
@@ -34,7 +35,7 @@ namespace Assets.Scripts
 
         public void BirdScored()
         {
-            if (gameOver)
+            if (_gameOver)
                 return;
             score++;
             _scoreText.text = "Score: " + score;
@@ -43,13 +44,13 @@ namespace Assets.Scripts
         public void BirdDied()
         {
             _gameOverText.SetActive(true);
-            gameOver = true;
+            _gameOver = true;
             _messenger.Publish(new GameOverMessage());
         }
 
         public void Update()
         {
-            if (gameOver && _input.IsKeyDown(KeyCode.Space))
+            if (_gameOver && _input.IsKeyDown(KeyCode.Space))
             {
                 _sceneManager.LoadScene(_sceneManager.GetActiveScene().buildIndex);
             }

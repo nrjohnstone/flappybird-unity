@@ -12,7 +12,6 @@ namespace Assets.Scripts
         public static Game instance;
         public GameObject gameOverText;
         public Text scoreText;
-        public bool gameOver { get { return _gameController.gameOver; } }
         public float scrollSpeed = -1.5f;
         private GameController _gameController;
 
