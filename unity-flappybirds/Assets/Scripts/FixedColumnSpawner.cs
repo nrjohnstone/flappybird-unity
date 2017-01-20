@@ -22,15 +22,6 @@ namespace Assets.Scripts
             Time = new AmbientTime();
         }
 
-        public void Initialize()
-        {
-            Columns = new IGameObject[ColumnPoolSize];
-            for (int i = 0; i < ColumnPoolSize; i++)
-            {
-                Columns[i] = ColumnFactory.Invoke();
-            }
-        }
-
         public bool ShouldSpawnColumn()
         {
             _timeSinceLastSpawned += Time.deltaTime;
@@ -44,11 +35,6 @@ namespace Assets.Scripts
             _currentColumn++;
             if (_currentColumn >= ColumnPoolSize)
                 _currentColumn = 0;
-        }
-
-        public Vector2 GetColumnPosition(int i)
-        {
-            return Columns[i].transform.position;
         }
         
         private float _timeSinceLastSpawned;
